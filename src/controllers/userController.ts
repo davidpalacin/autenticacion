@@ -4,7 +4,6 @@ import { UserInterface } from "../utils/interfaces/UserInterface"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import dotenv from "dotenv"
-import { create } from "domain"
 
 dotenv.config()
 
