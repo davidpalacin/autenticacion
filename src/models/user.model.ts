@@ -13,7 +13,7 @@ export const getUsers =
   };
 
 export const getUserById =
-  async (id: number): Promise<UserInterface | null> => {
+  async (id: string): Promise<UserInterface | null> => {
     const user = await db
       .collection<UserInterface>('users')
       .findOne({ id });
@@ -44,10 +44,10 @@ export const updateUser =
     return result.modifiedCount === 1;
   };
 
-export const deleteUser =
-  async (id: number): Promise<boolean> => {
+export const deleteUserDb =
+  async (id: string): Promise<boolean> => {
     const result = await db
       .collection<UserInterface>('users')
-      .deleteOne({ id });
+      .deleteOne({ _id: new ObjectId(id) });
     return result.deletedCount === 1;
   };
