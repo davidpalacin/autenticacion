@@ -1,8 +1,8 @@
 import { createUser, getUserByEmail } from "../../models/user.model"
 import bcrypt from "bcrypt"
-import { UserInterface } from "../../utils/interfaces/UserInterface"
+import { CreateOnePayloadInterface } from "../../utils/interfaces/CreateOnePayloadInterface"
 
-async function createOne (payload: any) {
+async function createOne (payload: CreateOnePayloadInterface) {
   // Comprobar que el email no existe ya
     const userEmail = payload.email
     const exist = await getUserByEmail(userEmail)
@@ -13,7 +13,7 @@ async function createOne (payload: any) {
     const password = payload.password
     const hashedPassword = await bcrypt.hash(password, saltRounds)
     // crear con contraseña hasheada
-    const newUser: UserInterface = {
+    const newUser: any = {
       ...payload,
       password: hashedPassword
     }

@@ -1,9 +1,10 @@
 import { getUserByEmail } from "../../models/user.model"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { LoginPayloadInterface } from "../../utils/interfaces/LoginPayloadInterface"
 
 
-async function loginUser(payload: any) {
+async function loginUser(payload: LoginPayloadInterface) {
   // Comprobar si existe el usuario
     const loginEmail = payload.email
     const userExist = await getUserByEmail(loginEmail)
