@@ -1,10 +1,7 @@
 import { Request, Response } from "express"
-import dotenv from "dotenv"
 import createOne from "./createOne"
 import getAllUsers from "./getAllUsers"
 import loginUser from "./loginUser"
-
-dotenv.config()
 
 export const userController = {
   getAll: async (req: Request, res: Response) => {
